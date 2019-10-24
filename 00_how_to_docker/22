@@ -1,0 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    22                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/23 11:01:39 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/23 11:16:16 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Set Aiur machine as a slave to local swarm where Char machine is the master
+
+docker-machine ssh Aiur
+
+## paste join token from number 20 below
+
+exit

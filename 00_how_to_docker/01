@@ -1,0 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    01                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/22 12:37:57 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/22 15:54:11 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Create virtual machine name Char
+
+docker-machine create --driver=virtualbox Char
+
+## option 2
+## docker-machine create -d virtualbox Char

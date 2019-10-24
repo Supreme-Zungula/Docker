@@ -1,0 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    09                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/22 12:38:36 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/22 12:38:37 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Setting up debian resources for C and C++ files
+docker pull debian
+apt-get update
+apt-get install clang
+apt-get install gcc
+apt-get install git

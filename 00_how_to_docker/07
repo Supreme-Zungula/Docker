@@ -1,0 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    07                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/24 10:35:18 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/24 10:35:19 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Get overlord container's IP address
+
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' overlord

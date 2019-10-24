@@ -1,0 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    31                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/23 16:23:18 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/24 15:34:47 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Quit and remove all services
+## docker service rm engineering-bay marines orbital-command
+
+docker service rm $(docker service ls -q)

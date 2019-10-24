@@ -1,0 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    21                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/22 15:52:17 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/22 15:53:27 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Create a virtual machine name Aiur using virtualbox as a driver
+
+docker-machine create --driver=virtualbox Aiur

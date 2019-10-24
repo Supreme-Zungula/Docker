@@ -1,0 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    28                                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/23 15:40:16 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/23 15:43:07 by yzungula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+## Launches a 42school/marine-squad in two replicas
+
+docker service create --name marines --replicas 2 --network overmind -e OC_USERNAME=Supreme -e OC_PASSWD=Senpai 42school/marine-squad
