@@ -6,9 +6,9 @@
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 12:38:24 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/22 12:38:25 by yzungula         ###   ########.fr        #
+#    Updated: 2019/10/28 13:45:56 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 docker pull alpine
-docker run -it --rm alpine /bin/ash
+docker run -it --rm alpine 

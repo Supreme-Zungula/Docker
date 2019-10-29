@@ -1,17 +1,21 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    19                                                 :+:      :+:    :+:    #
+#    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/22 12:45:45 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/25 16:09:43 by yzungula         ###   ########.fr        #
+#    Created: 2019/10/28 13:04:41 by yzungula          #+#    #+#              #
+#    Updated: 2019/10/28 17:14:17 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+FROM alpine
+MAINTAINER Yamkela Zungula (yzungula@student.wethinkcode.co.za)
+# CMD ["ls", "-l", "bin"]
+RUN apk update
+RUN apk add vim
+RUN vim testVim
 
-docker run --name Abathur -v ~/:/root -p 3000:3000 -dit python:2-slim
-docker exec Abathur pip install Flask
-echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > ~/app.py
-docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+# CMD ["apt-get", "update"]
+# CMD ["apt-get", "install vim"]

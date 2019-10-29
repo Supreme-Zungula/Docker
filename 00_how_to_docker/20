@@ -6,7 +6,7 @@
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 15:48:08 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/24 12:53:30 by yzungula         ###   ########.fr        #
+#    Updated: 2019/10/25 13:13:55 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,4 @@
 ## Get Char (manager) IP for use below 
 ## docker-machine ip Char
 
-docker-machine ssh Char
-docker swarm init --advertise-addr <manager-ip>
-exit
-
-## copy docker swarm join --token
+docker swarm init --advertise-addr $(docker-machine ip Char)
