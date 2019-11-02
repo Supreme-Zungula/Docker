@@ -6,26 +6,50 @@
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/28 17:17:44 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/30 17:04:41 by yzungula         ###   ########.fr        #
+#    Updated: 2019/10/31 16:53:48 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian
 
-RUN apt-get update && apt-get update
+RUN adduser --disabled-password --gecos "" teamspeak
+RUN mkdir /tmp/teamspeak
+RUN chown -R teamspeak:teamspeak /tmp/teamspeak/
+RUN chmod 0770 /tmp/teamspeak/
+
+
+RUN apt-get update && apt-get upgrade
 RUN apt-get install wget -y
 RUN apt-get install bzip2 -y
 RUN apt-get install tar -y
-CMD ["su", "--shell", "/bin/bash", "ts"]
-RUN wget -P /tmp/ https://files.teamspeak-services.com/releases/server/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
-WORKDIR /home/ts
 
-RUN bunzip2 /tmp/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
-RUN tar -xf /tmp/teamspeak3-server_linux_amd64-3.6.1.tar -C /home/ts
+# CMD ["su", "--shell", "/bin/bash", "ts"]
+RUN wget -P /tmp/ https://files.teamspeak-services.com/releases/server/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+
+# RUN bunzip2 /tmp/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+RUN tar -xjf /tmp/teamspeak3-server_linux_amd64-3.6.1.tar.bz2 
+RUN echo "WE ARE HERE\n"
+RUN ls -l
+
+WORKDIR /tmp/teamspeak
+RUN cp -r /teamspeak3-server_linux_amd64/* /tmp/teamspeak/
+# RUN touch /home/.ts3server_license_accepted
 
 # CMD ["touch", "/home/ts/.ts3server_license_accepted"]
-ENV TS3SERVER_LICENSE=accept
-RUN sh teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh
+# RUN chmod +x /tmp/teamspeak/ts3server_startscript.sh
+# RUN chmod +x /tmp/teamspeak/ts3server_minimal_runscript.sh
+# RUN chmod +x /tmp/teamspeak/ts3server
 
+ENV TS3SERVER_LICENSE=accept
+EXPOSE 9987/udp
+EXPOSE 10011
+EXPOSE 30033
+
+RUN ls -l
+
+# ENTRYPOINT ["sh", "/tmp/teamspeak/ts3server_startscript.sh", "start"]
+
+# RUN sh /tmp/teamspeak/ts3server_startscript.sh
+# RUN sh /tmp/teamspeak/ts3server_minimal_runscript.sh
 # -d /home/ts
 # RUN tar --help

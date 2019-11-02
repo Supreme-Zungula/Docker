@@ -1,19 +1,13 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    09                                                 :+:      :+:    :+:    #
+#    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/22 12:38:36 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/30 11:37:12 by yzungula         ###   ########.fr        #
+#    Created: 2019/11/01 16:14:44 by yzungula          #+#    #+#              #
+#    Updated: 2019/11/01 16:54:03 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-## Setting up debian resources for C and C++ files
-
-docker pull debian
-apt-get update -y
-apt-get install clang -y
-apt-get install gcc -y
-apt-get install buid-essential git -y
+FROM ruby:2.5
