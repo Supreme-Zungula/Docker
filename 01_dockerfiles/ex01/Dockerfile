@@ -5,51 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/28 17:17:44 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/31 16:53:48 by yzungula         ###   ########.fr        #
+#    Created: 2019/11/04 08:58:40 by yzungula          #+#    #+#              #
+#    Updated: 2019/11/04 10:37:31 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian
 
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y wget bzip2 tar
+
+WORKDIR /tmp
+
+RUN wget https://files.teamspeak-services.com/releases/server/3.9.1/teamspeak3-server_linux_amd64-3.9.1.tar.bz2
+RUN tar -xjf teamspeak3-server_linux_amd64-3.9.1.tar.bz2
+RUN mv teamspeak3-server_linux_amd64 teamspeak
+
+# add user
 RUN adduser --disabled-password --gecos "" teamspeak
-RUN mkdir /tmp/teamspeak
-RUN chown -R teamspeak:teamspeak /tmp/teamspeak/
-RUN chmod 0770 /tmp/teamspeak/
-
-
-RUN apt-get update && apt-get upgrade
-RUN apt-get install wget -y
-RUN apt-get install bzip2 -y
-RUN apt-get install tar -y
-
-# CMD ["su", "--shell", "/bin/bash", "ts"]
-RUN wget -P /tmp/ https://files.teamspeak-services.com/releases/server/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
-
-# RUN bunzip2 /tmp/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
-RUN tar -xjf /tmp/teamspeak3-server_linux_amd64-3.6.1.tar.bz2 
-RUN echo "WE ARE HERE\n"
-RUN ls -l
-
-WORKDIR /tmp/teamspeak
-RUN cp -r /teamspeak3-server_linux_amd64/* /tmp/teamspeak/
-# RUN touch /home/.ts3server_license_accepted
-
-# CMD ["touch", "/home/ts/.ts3server_license_accepted"]
-# RUN chmod +x /tmp/teamspeak/ts3server_startscript.sh
-# RUN chmod +x /tmp/teamspeak/ts3server_minimal_runscript.sh
-# RUN chmod +x /tmp/teamspeak/ts3server
+RUN chown -R teamspeak:teamspeak teamspeak
+RUN chmod +x teamspeak
 
 ENV TS3SERVER_LICENSE=accept
-EXPOSE 9987/udp
-EXPOSE 10011
+
+# expose used ports
 EXPOSE 30033
+EXPOSE 10011
+EXPOSE 9987/udp
 
-RUN ls -l
+WORKDIR /tmp/teamspeak
 
-# ENTRYPOINT ["sh", "/tmp/teamspeak/ts3server_startscript.sh", "start"]
+ENTRYPOINT sh ts3server_minimal_runscript.sh
 
-# RUN sh /tmp/teamspeak/ts3server_startscript.sh
-# RUN sh /tmp/teamspeak/ts3server_minimal_runscript.sh
-# -d /home/ts
-# RUN tar --help
+# docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept
