@@ -6,10 +6,10 @@
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 15:33:13 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/23 15:36:31 by yzungula         ###   ########.fr        #
+#    Updated: 2019/11/07 15:35:29 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## Get real-time logs on one task on engineering-bay
 
-docker service logs --follow engineering-bay 
+docker service logs --follow $(docker service ps -f "name=engineering-bay.1" engineering-bay -q)  

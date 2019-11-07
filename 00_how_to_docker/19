@@ -6,12 +6,21 @@
 #    By: yzungula <yzungula@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 12:45:45 by yzungula          #+#    #+#              #
-#    Updated: 2019/10/31 11:07:50 by yzungula         ###   ########.fr        #
+#    Updated: 2019/11/07 15:32:23 by yzungula         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-docker-machine ssh Char
-docker run --name Abathur -v ~/:/root -p 3000:3000 -d -it python:2-slim
+docker run -dt --name Abathur -v ~/:/root -p 3000:3000 python:2-slim
 docker exec Abathur pip install Flask
-printf "from flask import Flask\napp = Flask(__name__)\n@app.route(\"/\")\ndef hello_world():\n\treturn \"<h1>Hello, World!</h1>\""> ~/app.py
-docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+
+echo "from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def helloIndex():
+    return '<h1>Hello World</h1>'
+
+app.run(host='0.0.0.0', port= 3000)" > flaskApp.py
+
+docker cp flaskApp.py Abathur:/root
+docker exec Abathur python root/flaskApp.py
